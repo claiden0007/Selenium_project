@@ -60,7 +60,15 @@ class InventoryPage:
         return int(badges[0].text) if badges else 0
 
     def open_cart(self):
-        self.wait.until(EC.element_to_be_clickable(self.cart_link)).click()
+        cart = self.wait.until(
+            EC.element_to_be_clickable(self.cart_link)
+        )
+    
+        cart.click()
+    
+        self.wait.until(
+            EC.url_contains("cart.html")
+        )
 
 
 
