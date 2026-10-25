@@ -1,5 +1,3 @@
-from tabnanny import check
-
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
@@ -25,7 +23,9 @@ def navigate_to_checkout(driver):
     inventory_page.open_cart()
 
     cart_page = CartPage(driver)
+
     cart_page.click_checkout()
+
 
 def test_check_without_first_name(driver):
     navigate_to_checkout(driver)

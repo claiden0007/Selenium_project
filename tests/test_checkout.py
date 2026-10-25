@@ -1,6 +1,3 @@
-
-from tabnanny import check
-
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
@@ -28,6 +25,7 @@ def navigate_to_checkout(driver):
     cart_page = CartPage(driver)
     cart_page.click_checkout()
 
+
 def test_checkout_information(driver):
     navigate_to_checkout(driver)
     checkout_page = CheckoutPage(driver)
@@ -46,9 +44,12 @@ def test_complete_order(driver):
 
     checkout_page.fill_checkout_information(FIRST_NAME, LAST_NAME, POSTAL_CODE)
     checkout_page.click_continue()
+
+
     checkout_page.click_finish()
 
     assert checkout_page.get_confirmation_message() == "Thank you for your order!"
+
 
     
 
