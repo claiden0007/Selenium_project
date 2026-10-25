@@ -3,6 +3,7 @@ from pages.login_page import LoginPage
 from pages.cart_page import CartPage
 from pages.inventory_page import InventoryPage
 
+
 from test_data.test_users import VALID_PASSWORD, VALID_USERNAME
 
 

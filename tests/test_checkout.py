@@ -30,8 +30,16 @@ def test_checkout_information(driver):
     navigate_to_checkout(driver)
     checkout_page = CheckoutPage(driver)
 
-    checkout_page.fill_checkout_information(FIRST_NAME, LAST_NAME, POSTAL_CODE)
+    print("URL before filling fields:", driver.current_url)
+    print("Page title before filling fields:", checkout_page.get_page_title())
+
+    checkout_page.fill_checkout_information(
+        FIRST_NAME, LAST_NAME, POSTAL_CODE
+    )
     checkout_page.click_continue()
+
+    print("URL after Continue:", driver.current_url)
+    print("Page title after Continue:", checkout_page.get_page_title())
 
     assert checkout_page.get_page_title() == "Checkout: Overview"
     assert "Item total:" in checkout_page.get_item_total()
