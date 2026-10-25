@@ -36,8 +36,8 @@ class InventoryPage:
 
     
     def add_product_to_cart(self, product_name):
-        products = self.driver.find_elements(
-            By.CLASS_NAME, "inventory_item"
+        products = self.wait.until(
+            EC.presence_of_all_elements_located(self.inventory_item)
         )
     
         for product in products:
