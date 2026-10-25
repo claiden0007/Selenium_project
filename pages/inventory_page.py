@@ -59,6 +59,7 @@ class InventoryPage:
         badges = self.driver.find_elements(*self.cart_badge)
         return int(badges[0].text) if badges else 0
 
+    
     def open_cart(self):
         cart = self.wait.until(
             EC.element_to_be_clickable(self.cart_link)
@@ -66,9 +67,15 @@ class InventoryPage:
     
         cart.click()
     
-        self.wait.until(
-            EC.url_contains("cart.html")
-        )
+        try:
+            self.wait.until(
+                EC.url_contains("cart.html")
+            )
+        except Exception:
+            print("URL after cart click:", self.driver.current_url)
+            print("Page title after cart click:", self.driver.title)
+            print("Page source contains:", self.driver.page_source[:1000])
+            raise
 
 
 
